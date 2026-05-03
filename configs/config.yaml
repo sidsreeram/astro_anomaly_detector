@@ -1,0 +1,66 @@
+# ============================================================
+# Astro-Anomaly-Detector — Configuration File
+# ============================================================
+#
+# FIRST-TIME SETUP:
+#   Run setup.bat  (Windows)  to auto-configure data_root.
+#   OR manually set data_root below to the absolute path of
+#   your Hybrid-Astro-Deblender project folder.
+#
+# Example (Windows):  data_root: "E:/COLLAGE/ml/research/Hybrid-Astro-Deblender"
+# Example (Linux/Mac): data_root: "/home/user/projects/Hybrid-Astro-Deblender"
+# ============================================================
+
+# --- Data Paths ---
+data:
+  # !! SET THIS to your local Hybrid-Astro-Deblender folder !!
+  data_root: "C:/Users/ASUS/Documents/Hybrid-Astro-Deblender"
+
+  # Sub-paths inside data_root (do NOT change these)
+  train_subdir: "data/processed/dataset_full/train"
+  val_subdir:   "data/processed/dataset_full/val"
+
+  # Number of input channels (4-band: HST+AstroSat)
+  num_channels: 4
+  # Tile spatial size
+  tile_size: 128
+
+
+# --- Model ---
+model:
+  # Latent space bottleneck dimension
+  latent_dim: 256
+  # Encoder channel progression
+  base_channels: 32
+
+# --- Training ---
+training:
+  epochs: 60
+  batch_size: 64
+  learning_rate: 0.0003
+  weight_decay: 0.00001
+  kld_weight: 0.001
+  # Save a checkpoint every N epochs
+  save_every: 10
+  # Fraction of training data to use (1.0 = all)
+  data_fraction: 1.0
+
+# --- Anomaly Detection ---
+anomaly:
+  # Percentile threshold for flagging an anomaly (97 = top 3% reconstruction errors - stronger signal)
+  threshold_percentile: 97
+  # Number of top anomaly tiles to save as images
+  top_n_anomalies: 50
+  # Which metric to use: 'mse' | 'ssim' | 'combined'
+  score_metric: "combined"
+  # Weight of SSIM vs MSE in combined score (0=only MSE, 1=only SSIM)
+  ssim_weight: 0.5
+
+# --- Output Paths ---
+output:
+  checkpoint_dir: "outputs/checkpoints"
+  anomaly_map_dir: "outputs/anomaly_maps"
+  report_dir:      "outputs/reports"
+  best_model_name: "best_vae.pth"
+  anomaly_csv:     "outputs/reports/anomaly_scores_vae.csv"
+  summary_plot:    "outputs/reports/anomaly_score_distribution_vae.png"

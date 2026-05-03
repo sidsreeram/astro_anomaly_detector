@@ -1,0 +1,35 @@
+============================================================
+MODEL COMPARISON SUMMARY: AUTOENCODER vs VAE
+============================================================
+
+Total tiles evaluated: 3362
+
+1. STATISTICS
+  Standard Autoencoder:
+    Mean MSE:  0.004912
+    Max MSE:   0.042898
+    Score Std: 0.127827
+
+  Variational Autoencoder (VAE):
+    Mean MSE:  0.019703
+    Max MSE:   0.088057
+    Score Std: 0.243384
+
+2. TOP 10 ANOMALIES (By Filename)
+  Rank  | Autoencoder          | VAE                 
+  --------------------------------------------------
+  1     | tile_9474.npy        | tile_27039.npy      
+  2     | tile_9125.npy        | tile_20780.npy      
+  3     | tile_10496.npy       | tile_13970.npy      
+  4     | tile_8753.npy        | tile_7923.npy       
+  5     | tile_9969.npy        | tile_9125.npy       
+  6     | tile_8752.npy        | tile_6518.npy       
+  7     | tile_13111.npy       | tile_8574.npy       
+  8     | tile_5638.npy        | tile_24506.npy      
+  9     | tile_8431.npy        | tile_10496.npy      
+  10    | tile_11715.npy       | tile_9632.npy       
+
+3. INTERPRETATION
+  * Overlap in Top 20: 5/20 (25.0%)
+  * VAE causes higher maximum reconstruction error (2.1x higher) on anomalous tiles.
+    This suggests VAE is MORE strict about the 'normal' manifold, failing harder on anomalies.

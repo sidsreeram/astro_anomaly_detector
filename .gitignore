@@ -1,0 +1,57 @@
+# ============================================================
+# Astro-Anomaly-Detector — .gitignore
+# ============================================================
+
+# ── Python ────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# ── Virtual environments ──────────────────────────────────
+.venv/
+venv/
+env/
+.env/
+
+# ── Model checkpoints (too large for GitHub) ─────────────
+outputs/checkpoints/*.pth
+
+# ── Large output files ────────────────────────────────────
+# Keep the report PNGs and CSV for reference but exclude heavy files
+outputs/anomaly_maps/
+
+# ── Dataset tiles (NEVER commit .npy files) ───────────────
+*.npy
+data/
+
+# ── Jupyter notebooks checkpoints ────────────────────────
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# ── IDE / editor ─────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── OS files ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs ─────────────────────────────────────────────────
+*.log
+*.tmp
+
+# ── Keep these output files in git (useful for reference) ─
+!outputs/reports/*.png
+!outputs/reports/*.csv
+!outputs/reports/*.txt

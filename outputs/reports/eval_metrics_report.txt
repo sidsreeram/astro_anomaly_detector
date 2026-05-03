@@ -1,0 +1,46 @@
+﻿=== DATASET OVERVIEW ===
+Total tiles scored : 3362
+Anomalies flagged  : 169  (5.03%)
+Normal tiles       : 3193
+
+=== ANOMALY SCORE (Combined MSE + SSIM-delta) ===
+  Min    : 0.093306
+  Max    : 0.471478
+  Mean   : 0.258628
+  Median : 0.330615
+  StdDev : 0.138619
+  P95    : 0.431955  <- threshold
+  P99    : 0.451785
+
+=== MSE SCORES ===
+  Mean (normal)  : 0.009497
+  Mean (anomaly) : 0.040241
+  Ratio          : 4.24x higher for anomalies
+
+=== SSIM-DELTA SCORES ===
+  Mean (normal)  : 0.488122
+  Mean (anomaly) : 0.848036
+
+=== SCORE SEPARATION (Anomaly Discriminability) ===
+  Effect size (Cohen's d-like) : 1.4091
+  Normal  score range : 0.09331 - 0.43190
+  Anomaly score range : 0.43196 - 0.47148
+  Normal tiles above anomaly threshold : 0 (0.0% false-positive rate)
+
+=== TOP 10 MOST ANOMALOUS TILES ===
+      Filename  Anomaly_Score      MSE  SSIM_Delta
+tile_10496.npy       0.471478 0.053681    0.889275
+ tile_9125.npy       0.469695 0.055642    0.883748
+ tile_9474.npy       0.467034 0.050162    0.883906
+tile_13111.npy       0.466100 0.050688    0.881512
+tile_27039.npy       0.463346 0.055901    0.870790
+ tile_9619.npy       0.460744 0.042375    0.879112
+ tile_9625.npy       0.460463 0.046796    0.874131
+ tile_8956.npy       0.459706 0.047961    0.871452
+ tile_9969.npy       0.459530 0.044750    0.874310
+ tile_8752.npy       0.459296 0.046731    0.871860
+
+=== RECONSTRUCTION QUALITY (Training Result) ===
+  Final best val_loss  : ~0.0199  (from epoch 2 checkpoint)
+  Score metric         : Combined (alpha=0.5 * MSE + 0.5 * SSIM-delta)
+  Threshold percentile : 95th percentile
